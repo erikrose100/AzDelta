@@ -11,13 +11,13 @@ Console.WriteLine("Hello, World!");
 
 var json = """
 {
-    "id": "/subscriptions/913575a3-f8f6-4972-91e3-4d69586885ef/resourceGroups/Container-Resources/providers/Microsoft.App/containerApps/minapi-app/providers/Microsoft.Resources/changes/08584614150393775807_0c5941e8-78ca-4d40-92c7-9a373466716c",
-    "tenantId": "1e13d1f5-0297-4d2a-8117-d4092c853cbd",
+    "id": "/subscriptions/913575a3-0000-0000-0000-4d69586885ef/resourceGroups/rgName/providers/Microsoft.App/containerApps/appName/providers/Microsoft.Resources/changes/08584614150393775807_0c5941e8-78ca-4d40-92c7-9a373466716c",
+    "tenantId": "1e13d1f5-0000-0000-0000-d4092c853cbd",
     "location": "eastus2",
     "resourceGroup": "container-resources",
-    "subscriptionId": "913575a3-f8f6-4972-91e3-4d69586885ef",
+    "subscriptionId": "913575a3-0000-0000-0000-4d69586885ef",
     "targetResourceType": "microsoft.app/containerapps",
-    "changedBy": "reconroseeri@gmail.com",
+    "changedBy": "email@gmail.com",
     "clientType": "Azure Portal",
     "timestamp": "2025-02-22T02:47:44.399Z",
     "operation": "Microsoft.App/containerApps/write",
