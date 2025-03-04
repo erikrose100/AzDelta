@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -28,9 +29,28 @@ namespace AzDelta
     public class ChangeValues
     {
         private string? _prev;
-        public string PreviousValue { get { return _prev ?? "null"; } set { _prev = value; } }
+        public string PreviousValue { get => StripWhiteSpace(_prev) ?? "null"; set { _prev = value; } }
 
         private string? _new;
-        public string NewValue { get { return _new ?? "null"; } set { _new = value; } }
+        public string NewValue { get => StripWhiteSpace(_new) ?? "null"; set { _new = value; } }
+
+        private static string? StripWhiteSpace(string? input)
+        {
+            if (input is null)
+            {
+                return null;
+            }
+            var sb = new StringBuilder(input.Length);
+
+            foreach (char i in input)
+            {
+                if (!char.IsWhiteSpace(i))
+                {
+                    sb.Append(i);
+                }
+            }
+            
+            return sb.ToString();
+        }
     }
 }
