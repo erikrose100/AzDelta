@@ -64,12 +64,14 @@ resourcechanges
 const int groupSize = 100;
 for (var i = 0; i <= subIds.Length / groupSize; ++i)
 {
-    var currSubscriptionGroup = subIds.Skip(i * groupSize).Take(groupSize).ToArray();
+    var currSubscriptionGroup = subIds.Skip(i * groupSize).Take(groupSize);
 
-    var content = new ResourceQueryContent(query)
+    var content = new ResourceQueryContent(query);
+
+    foreach (var sub in currSubscriptionGroup)
     {
-        Subscriptions = { currSubscriptionGroup[0], currSubscriptionGroup[1] }
-    };
+        content.Subscriptions.Add(sub);
+    }
 
     var result = await tenantResource.GetResourcesAsync(content);
 
