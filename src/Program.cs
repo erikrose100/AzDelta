@@ -56,6 +56,7 @@ for (var i = 0; i <= subIds.Length / groupSize; ++i)
 
     foreach (var res in desData!)
     {
+        foreach (var changes in res.Changes?.ChangeValues?.Values)
         var values = res.Changes?.ChangeValues?.Values.FirstOrDefault().Deserialize<ChangeValues>(options);
         Console.WriteLine("Property: {0}\n\tPrevious value: {1}\n\tNew value: {2}", res.Changes?.ChangeValues?.Keys.FirstOrDefault(), values!.PreviousValue, values.NewValue);
     }
