@@ -36,21 +36,36 @@ namespace AzDelta
 
         private static string? StripWhiteSpace(string? input)
         {
-            if (input is null)
+            if (string.IsNullOrEmpty(input))
             {
-                return null;
+                return input; // Return null or empty directly
             }
-            var sb = new StringBuilder(input.Length);
 
-            foreach (char i in input)
+            int newLength = 0;
+            for (int i = 0; i < input.Length; i++)
             {
-                if (!char.IsWhiteSpace(i))
+                if (!char.IsWhiteSpace(input[i]))
                 {
-                    sb.Append(i);
+                    newLength++;
                 }
             }
-            
-            return sb.ToString();
+
+            if (newLength == input.Length)
+            {
+                return input; // No whitespace, return original
+            }
+
+            return string.Create(newLength, input, (buffer, source) =>
+            {
+                int bufferIndex = 0;
+                for (int i = 0; i < source.Length; i++)
+                {
+                    if (!char.IsWhiteSpace(source[i]))
+                    {
+                        buffer[bufferIndex++] = source[i];
+                    }
+                }
+            });
         }
     }
 }
