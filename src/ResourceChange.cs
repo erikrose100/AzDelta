@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace AzDelta
 {
-    public class ResourceChange
+    public struct ResourceChange
     {
         public required string Id { get; set; }
         public Guid TenantId { get; set; }
@@ -20,7 +20,7 @@ namespace AzDelta
         public Changes? Changes { get; set; }
     }
 
-    public class Changes
+    public struct Changes
     {
         [JsonExtensionData]
         public Dictionary<string, JsonElement>? ChangeValues { get; set; }

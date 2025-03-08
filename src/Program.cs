@@ -52,7 +52,12 @@ for (var i = 0; i <= subIds.Length / groupSize; ++i)
         throw new HttpRequestException($"Query returned {result.GetRawResponse()} error code");
     }
 
-    var desData = JsonSerializer.Deserialize<List<ResourceChange>>(result.Value.Data, options);
+    if (result.Value is null || result.Value.Count == 0)
+    {
+        Console.WriteLine("No changes found.");
+    }
+
+    var desData = JsonSerializer.Deserialize<List<ResourceChange>>(result.Value!.Data, options);
 
     foreach (var res in desData!)
     {
